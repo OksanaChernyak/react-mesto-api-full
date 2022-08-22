@@ -163,7 +163,7 @@ function App() {
             })
             .catch(() => {
                 setIsInfoToolTipOpen(true);
-                setNotification({text: "Что-то пошло не так! Попробуйте ещё раз.", pic: "loginUnsuccessful"})
+                setNotification({text: "Что-то пошло не так! Попробуйте ещё раз.", pic: loginUnsuccessful})
             })
     }
 
@@ -173,13 +173,13 @@ function App() {
                 if (res.data) {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
-                    setNotification({text: "Вы успешно зарегистрировались!", pic: "loginSuccessful"})
+                    setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
                     setEmail(email)
                 }
             })
             .catch(() => {
                 setIsInfoToolTipOpen(true);
-                setNotification({text: "Что-то пошло не так! Попробуйте ещё раз.", pic: "loginUnsuccessful"})
+                setNotification({text: "Что-то пошло не так! Попробуйте ещё раз.", pic: loginUnsuccessful})
             })
     };
 
