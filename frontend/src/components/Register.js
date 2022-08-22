@@ -33,7 +33,6 @@ function Register({handleRegister}) {
                         id="email-input"
                         value={email}
                         onChange={handleChangeEmail}
-                        type="email"
                         placeholder="Email"
                         required
                     />

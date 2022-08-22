@@ -16,8 +16,6 @@ import Register from "./Register";
 import * as Auth from "../utils/Auth";
 import ProtectedRoute from "./ProtectedRoute";
 import InfoTooltip from "./InfoTooltip";
-import loginSuccessful from "../images/loginSuccessful.svg";
-import loginUnsuccessful from "../images/loginUnsuccessful.svg";
 
 export default App;
 

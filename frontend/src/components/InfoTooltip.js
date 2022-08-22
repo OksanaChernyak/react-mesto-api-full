@@ -10,7 +10,7 @@ function InfoToolTip({isOpen, onClose, notification}) {
                     type="button"
                     aria-label="Закрыть попап"
                 ></button>
-                <img src={notification.pic} className="popup__notification-pic"/>
+                <img src={notification.pic} alt="notification pic" className="popup__notification-pic"/>
                 <p className="popup__notification-text">{notification.text}</p>
             </div>
         </div>
