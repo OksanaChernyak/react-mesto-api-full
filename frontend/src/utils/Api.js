@@ -14,14 +14,14 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch(`${this._baseUrl}${"cards"}`, {
+        return fetch(`${this._baseUrl}${"/cards"}`, {
             method: "GET",
             headers: this._headers,
         }).then(this._handleError);
     }
 
     addCardtoServer(data) {
-        return fetch(`${this._baseUrl}${"cards"}`, {
+        return fetch(`${this._baseUrl}${"/cards"}`, {
             method: "POST",
             headers: this._headers,
             body: JSON.stringify({
@@ -32,14 +32,14 @@ class Api {
     }
 
     getUserData() {
-        return fetch(`${this._baseUrl}${"users/me"}`, {
+        return fetch(`${this._baseUrl}${"/users/me"}`, {
             method: "GET",
             headers: this._headers,
         }).then(this._handleError);
     }
 
     changeUserData({name, about}) {
-        return fetch(`${this._baseUrl}${"users/me"}`, {
+        return fetch(`${this._baseUrl}${"/users/me"}`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -50,7 +50,7 @@ class Api {
     }
 
     changeAvatar({avatar}) {
-        return fetch(`${this._baseUrl}${"users/me/avatar"}`, {
+        return fetch(`${this._baseUrl}${"/users/me/avatar"}`, {
             method: "PATCH",
             headers: this._headers,
             body: JSON.stringify({
@@ -60,21 +60,21 @@ class Api {
     }
 
     deleteCard(cardId) {
-        return fetch(`${this._baseUrl}${"cards/"}${cardId}`, {
+        return fetch(`${this._baseUrl}${"/cards/"}${cardId}`, {
             method: "DELETE",
             headers: this._headers,
         }).then(this._handleError);
     }
 
     addLikeToCard(cardId) {
-        return fetch(`${this._baseUrl}${"cards/likes/"}${cardId}`, {
+        return fetch(`${this._baseUrl}${"/cards/likes/"}${cardId}`, {
             method: "PUT",
             headers: this._headers,
         }).then(this._handleError);
     }
 
     deleteLikeFromCard(cardId) {
-        return fetch(`${this._baseUrl}${"cards/likes/"}${cardId}`, {
+        return fetch(`${this._baseUrl}${"/cards/likes/"}${cardId}`, {
             method: "DELETE",
             headers: this._headers,
         }).then(this._handleError);
@@ -82,5 +82,8 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: "http://oksanachernyak.nomoredomains.sbs/",
+    baseUrl: "http://oksanachernyak.nomoredomains.sbs",
+    headers: {
+        "Content-Type": "application/json",
+    },
 });
