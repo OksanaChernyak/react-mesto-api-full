@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://oksanachernyak.nomoredomains.sbs/';
 const checkRes = (response) => {
     return response.ok ? response.json() : Promise.reject(` У нас все поломалось: ${response.status}`)
 }
