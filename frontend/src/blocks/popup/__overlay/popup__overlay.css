@@ -1,0 +1,11 @@
+.popup__overlay {
+  max-width: 75vw;
+  max-height: 75vh;
+  border-radius: 0;
+  background: none;
+  padding: 0;
+  margin: 90px auto 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
