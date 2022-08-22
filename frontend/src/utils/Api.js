@@ -82,9 +82,5 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: "https://mesto.nomoreparties.co/v1/cohort-41/",
-    headers: {
-        authorization: "d9af2d99-485f-4815-ad38-c00dc8b82856",
-        "content-Type": "application/json",
-    },
+    baseUrl: "http://oksanachernyak.nomoredomains.sbs/",
 });
