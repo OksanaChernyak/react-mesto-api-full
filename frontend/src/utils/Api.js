@@ -85,6 +85,5 @@ export const api = new Api({
     baseUrl: "http://oksanachernyak.nomoredomains.sbs",
     headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
 });
