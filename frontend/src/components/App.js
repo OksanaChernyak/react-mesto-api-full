@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef} from "react";
 import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import "../index.css";
 import Header from "./Header";
@@ -33,7 +33,7 @@ function App() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [email, setEmail] = useState("");
     const [notification, setNotification] = useState({text: "", pic: ""});
-    const navigate = useNavigate();
+    const navigation = useRef(useNavigate());
 
     useEffect(() => {
         tokenCheck()
@@ -41,7 +41,7 @@ function App() {
 
     useEffect(() => {
         if (loggedIn) {
-            navigate("/")
+            navigation.current.navigate("/")
         }
     }, [loggedIn]);
 

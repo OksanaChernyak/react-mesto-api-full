@@ -17,6 +17,7 @@ const corsOptions = {
   origin: 'http://oksanachernyak.nomoredomains.sbs',
   credentials: true,
   optionsSuccessStatus: 200,
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
 };
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
