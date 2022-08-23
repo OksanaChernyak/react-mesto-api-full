@@ -1,6 +1,7 @@
 class Api {
     constructor(options) {
         this._baseUrl = options.baseUrl;
+        this._headers = options.headers;
     }
 
     _handleError(res) {
@@ -12,22 +13,17 @@ class Api {
         );
     }
 
-    getInitialCards(token) {
+    getInitialCards() {
         return fetch(`${this._baseUrl}${"/cards"}`, {
             method: "GET",
-            headers:
-                {authorization: `Bearer ${token}`},
+            headers: this._headers,
         }).then(this._handleError);
     }
 
-    addCardtoServer(data, token) {
+    addCardtoServer(data) {
         return fetch(`${this._baseUrl}${"/cards"}`, {
             method: "POST",
-            headers:
-                {
-                    authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+            headers: this._headers,
             body: JSON.stringify({
                 name: data.name,
                 link: data.link,
@@ -35,22 +31,17 @@ class Api {
         }).then(this._handleError);
     }
 
-    getUserData(token) {
+    getUserData() {
         return fetch(`${this._baseUrl}${"/users/me"}`, {
             method: "GET",
-            headers:
-                {authorization: `Bearer ${token}`},
+            headers: this._headers,
         }).then(this._handleError);
     }
 
-    changeUserData({name, about}, token) {
+    changeUserData({name, about}) {
         return fetch(`${this._baseUrl}${"/users/me"}`, {
             method: "PATCH",
-            headers:
-                {
-                    authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+            headers: this._headers,
             body: JSON.stringify({
                 name: name,
                 about: about,
@@ -58,45 +49,42 @@ class Api {
         }).then(this._handleError);
     }
 
-    changeAvatar({avatar}, token) {
+    changeAvatar({avatar}) {
         return fetch(`${this._baseUrl}${"/users/me/avatar"}`, {
             method: "PATCH",
-            headers:
-                {
-                    authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+            headers: this._headers,
             body: JSON.stringify({
                 avatar: avatar,
             }),
         }).then(this._handleError);
     }
 
-    deleteCard(cardId, token) {
+    deleteCard(cardId) {
         return fetch(`${this._baseUrl}${"/cards/"}${cardId}`, {
             method: "DELETE",
-            headers:
-                {authorization: `Bearer ${token}`},
+            headers: this._headers,
         }).then(this._handleError);
     }
 
-    addLikeToCard(cardId, token) {
+    addLikeToCard(cardId) {
         return fetch(`${this._baseUrl}${"/cards/likes/"}${cardId}`, {
             method: "PUT",
-            headers:
-                {authorization: `Bearer ${token}`},
+            headers: this._headers,
         }).then(this._handleError);
     }
 
-    deleteLikeFromCard(cardId, token) {
+    deleteLikeFromCard(cardId) {
         return fetch(`${this._baseUrl}${"/cards/likes/"}${cardId}`, {
             method: "DELETE",
-            headers:
-                {authorization: `Bearer ${token}`},
+            headers: this._headers,
         }).then(this._handleError);
     }
 }
 
 export const api = new Api({
     baseUrl: "http://oksanachernyak.nomoredomains.sbs",
+    headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
 });
