@@ -13,12 +13,6 @@ const NotFoundError = require('./utils/NotFoundError');
 
 const { PORT = 3000 } = process.env;
 const app = express();
-const corsOptions = {
-  origin: 'http://oksanachernyak.nomoredomains.sbs',
-  credentials: true,
-  optionsSuccessStatus: 200,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-};
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   useNewUrlParser: true,
@@ -27,7 +21,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(requestLogger);
 app.post('/signin', celebrate({
   body: Joi.object().keys({
