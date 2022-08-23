@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../utils/UnauthorizedError');
 
+const { NODE_ENV, JWT_SECRET } = process.env;
 // eslint-disable-next-line consistent-return
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
@@ -13,7 +14,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, 'oksana-have-secrets');
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'oksana-have-secrets');
   } catch (err) {
     throw new UnauthorizedError('Переданы неверные данные');
   }
