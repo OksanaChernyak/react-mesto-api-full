@@ -98,5 +98,5 @@ class Api {
 }
 
 export const api = new Api({
-    baseUrl: "oksanachernyak.nomoredomains.sbs",
+    baseUrl: "http://oksanachernyak.nomoredomains.sbs",
 });
