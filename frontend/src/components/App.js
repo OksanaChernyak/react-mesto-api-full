@@ -41,7 +41,7 @@ function App() {
 
     useEffect(() => {
         if (loggedIn) {
-            navigate("/users/me")
+            navigate("/")
         }
     }, [loggedIn]);
 
@@ -175,6 +175,7 @@ function App() {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
+                    setCurrentUser(res);
                     setEmail(email)
                 }
             })
@@ -190,7 +191,6 @@ function App() {
     }
 
     const tokenCheck = () => {
-        console.log(localStorage);
         let token = localStorage.getItem("token");
         if (token) {
             Auth.getContent(token)
