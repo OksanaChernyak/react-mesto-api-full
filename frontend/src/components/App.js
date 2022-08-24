@@ -170,7 +170,8 @@ function App() {
     const handleRegister = (email, password) => {
         Auth.register(email, password)
             .then((res) => {
-                if (res) {
+                console.log(res);
+                if (res.data) {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
