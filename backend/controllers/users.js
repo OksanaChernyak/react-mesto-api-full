@@ -24,7 +24,7 @@ module.exports.getUsers = (req, res, next) => {
       if (!users) {
         next(new UnauthorizedError('Вы не авторизованы'));
       } else {
-        res.send([users]);
+        res.send({ data: users });
       }
     })
     .catch(next);
