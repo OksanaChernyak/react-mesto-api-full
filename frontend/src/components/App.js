@@ -176,7 +176,6 @@ function App() {
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful});
                     setEmail(email);
-                    navigate('/signin')
                 }
             })
             .catch(() => {
