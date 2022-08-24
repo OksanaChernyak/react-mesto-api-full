@@ -49,6 +49,7 @@ function App() {
         if (loggedIn) {
             api.getUserData()
                 .then((res) => {
+                    console.log(res)
                     setCurrentUser(res);
                 })
                 .catch((err) => {
