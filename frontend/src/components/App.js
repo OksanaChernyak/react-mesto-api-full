@@ -51,6 +51,7 @@ function App() {
                 .then((res) => {
                     console.log(res)
                     setCurrentUser(res);
+                    console.log(currentUser)
                 })
                 .catch((err) => {
                     console.log(err);
