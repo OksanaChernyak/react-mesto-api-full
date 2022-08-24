@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Navigate, Route, Routes, useNavigate, useHistory} from "react-router-dom";
 import "../index.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -34,16 +34,17 @@ function App() {
     const [email, setEmail] = useState("");
     const [notification, setNotification] = useState({text: "", pic: ""});
     const navigate = useNavigate();
+    const history = useHistory();
 
     useEffect(() => {
         tokenCheck()
     }, []);
-
+/*
     useEffect(() => {
         if (loggedIn) {
             navigate("/")
         }
-    }, [loggedIn]);
+    }, [loggedIn]);*/
 
     useEffect(() => {
         if (loggedIn) {
@@ -159,6 +160,7 @@ function App() {
                     localStorage.setItem("token", res.token);
                     setLoggedIn(true);
                     setEmail(email);
+                    history("/");
                 }
             })
             .catch(() => {
@@ -172,10 +174,11 @@ function App() {
             .then((res) => {
                 console.log(res);
                 if (res) {
-                    setLoggedIn(true);
+                   // setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful});
-                    setEmail(email);
+                    //setEmail(email);
+                    history("/signin");
                 }
             })
             .catch(() => {
@@ -187,6 +190,7 @@ function App() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setLoggedIn(false);
+        history("/signin");
     }
 
     const tokenCheck = () => {
@@ -196,6 +200,7 @@ function App() {
                 .then((res) => {
                     setLoggedIn(true);
                     setEmail(res.email);
+                    history("/");
                 })
                 .catch((err) => {
                     console.log(err)
