@@ -158,7 +158,7 @@ function App() {
                 if (res.token) {
                     localStorage.setItem("token", res.token);
                     setLoggedIn(true);
-                    setEmail(res.email);
+                    setEmail(email);
                 }
             })
             .catch(() => {
@@ -174,7 +174,7 @@ function App() {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
-                    setEmail(res.email)
+                    setEmail(email)
                 }
             })
             .catch(() => {
@@ -195,7 +195,7 @@ function App() {
             Auth.getContent(token)
                 .then((res) => {
                     setLoggedIn(true);
-                    setEmail(res.data.email);
+                    setEmail(res.email);
                 })
                 .catch((err) => {
                     console.log(err)
