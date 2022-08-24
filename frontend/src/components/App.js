@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import {Navigate, Route, Routes, useNavigate, useHistory} from "react-router-dom";
+import {Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import "../index.css";
 import Header from "./Header";
 import Main from "./Main";
@@ -34,7 +34,6 @@ function App() {
     const [email, setEmail] = useState("");
     const [notification, setNotification] = useState({text: "", pic: ""});
     const navigate = useNavigate();
-    const history = useHistory();
 
     useEffect(() => {
         tokenCheck()
@@ -160,7 +159,7 @@ function App() {
                     localStorage.setItem("token", res.token);
                     setLoggedIn(true);
                     setEmail(email);
-                    history("/");
+                    navigate("/");
                 }
             })
             .catch(() => {
@@ -178,7 +177,7 @@ function App() {
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful});
                     //setEmail(email);
-                    history("/signin");
+                    navigate("/signin");
                 }
             })
             .catch(() => {
@@ -190,7 +189,7 @@ function App() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setLoggedIn(false);
-        history("/signin");
+        navigate("/signin");
     }
 
     const tokenCheck = () => {
@@ -200,7 +199,7 @@ function App() {
                 .then((res) => {
                     setLoggedIn(true);
                     setEmail(res.email);
-                    history("/");
+                    navigate("/");
                 })
                 .catch((err) => {
                     console.log(err)
