@@ -217,8 +217,8 @@ function App() {
                         <Route path="/signup"
                                element={<Register loggedIn={loggedIn} handleRegister={handleRegister}/>}/>
 
-                        <Route path="/" element={
-                            <ProtectedRoute path="/" loggedIn={loggedIn}>
+                        <Route path="/users/me" element={
+                            <ProtectedRoute path="/users/me" loggedIn={loggedIn}>
                                 <Main onEditProfile={handleEditProfileClick} onEditAvatar={handleEditAvatarClick}
                                       onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick}
                                       onCardLike={handleCardLike}
