@@ -24,7 +24,7 @@ module.exports.getUsers = (req, res, next) => {
       if (!users) {
         next(new UnauthorizedError('Вы не авторизованы'));
       } else {
-        res.send({ data: users });
+        res.send(users);
       }
     })
     .catch(next);
@@ -36,7 +36,7 @@ module.exports.getMe = (req, res, next) => {
       if (!user) {
         next(new NotFoundError('Пользователь с таким идентификатором не найден'));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch(next);
@@ -48,7 +48,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         next(new NotFoundError('Пользователь с таким идентификатором не найден'));
       } else {
-        res.send({ data: user });
+        res.send(user);
       }
     })
     .catch((error) => {
@@ -69,13 +69,11 @@ module.exports.createUser = (req, res, next) => {
       name, about, avatar, email, password: hash,
     }))
     .then((user) => res.send({
-      data: {
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
-        email: user.email,
-        _id: user._id,
-      },
+      name: user.name,
+      about: user.about,
+      avatar: user.avatar,
+      email: user.email,
+      _id: user._id,
     }))
     .catch((error) => {
       if (error.name === 'ValidationError') {
@@ -98,7 +96,7 @@ module.exports.updateProfile = (req, res, next) => {
       if (!user) {
         next(new NotFoundError('Пользователь с таким идентификатором не найден'));
       } else {
-        res.send({ user });
+        res.send(user);
       }
     })
     .catch((error) => {
@@ -117,7 +115,7 @@ module.exports.updateAvatar = (req, res, next) => {
       if (!user) {
         next(new NotFoundError('Пользователь с таким идентификатором не найден'));
       } else {
-        res.send({ user });
+        res.send(user);
       }
     })
     .catch((error) => {
