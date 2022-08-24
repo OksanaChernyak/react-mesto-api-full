@@ -158,7 +158,7 @@ function App() {
                 if (res.token) {
                     localStorage.setItem("token", res.token);
                     setLoggedIn(true);
-                    setEmail(email);
+                    setEmail(res.email);
                 }
             })
             .catch(() => {
@@ -174,7 +174,7 @@ function App() {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
-                    setEmail(email)
+                    setEmail(res.email)
                 }
             })
             .catch(() => {
