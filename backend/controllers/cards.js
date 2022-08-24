@@ -19,7 +19,7 @@ module.exports.deleteCardById = (req, res, next) => {
       if (ownerId === userId) {
         Card.findByIdAndRemove(req.params.cardId)
           .then((deleted) => {
-            res.status(200).send({ data: deleted });
+            res.status(200).send(deleted);
           })
           .catch(() => {
             next();
