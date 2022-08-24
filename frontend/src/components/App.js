@@ -41,7 +41,7 @@ function App() {
 
     useEffect(() => {
         if (loggedIn) {
-            navigate("/")
+            navigate("/users/me")
         }
     }, [loggedIn]);
 
@@ -171,7 +171,7 @@ function App() {
         Auth.register(email, password)
             .then((res) => {
                 console.log(res);
-                if (res.data) {
+                if (res) {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
