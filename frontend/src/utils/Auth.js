@@ -1,4 +1,4 @@
-const BASE_URL = 'http://api.oksanachernyak.nomoredomains.sbs';
+const BASE_URL = 'https://api.oksanachernyak.nomoredomains.sbs';
 const checkRes = (response) => {
     return response.ok ? response.json() : Promise.reject(` У нас все поломалось: ${response.status}`)
 }
