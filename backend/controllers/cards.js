@@ -63,7 +63,7 @@ module.exports.addLike = (req, res, next) => {
       if (!card) {
         next(new NotFoundError('Карточка с таким идентификатором не найдена'));
       } else {
-        res.send({ likes: card.likes });
+        res.send(card);
       }
     })
     .catch((error) => {
@@ -85,7 +85,7 @@ module.exports.deleteLike = (req, res, next) => {
       if (!card) {
         next(new NotFoundError('Карточка с таким идентификатором не найдена'));
       } else {
-        res.send({ likes: card.likes });
+        res.send(card);
       }
     })
     .catch((error) => {
