@@ -174,9 +174,8 @@ function App() {
                 if (res) {
                     setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
-                    setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful})
-                    setCurrentUser(res);
-                    setEmail(email)
+                    setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful});
+                    setEmail(email);
                 }
             })
             .catch(() => {
