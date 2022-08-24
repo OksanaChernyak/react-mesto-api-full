@@ -38,12 +38,12 @@ function App() {
     useEffect(() => {
         tokenCheck()
     }, []);
-/*
+
     useEffect(() => {
         if (loggedIn) {
             navigate("/")
         }
-    }, [loggedIn]);*/
+    }, [loggedIn]);
 
     useEffect(() => {
         if (loggedIn) {
@@ -159,7 +159,6 @@ function App() {
                     localStorage.setItem("token", res.token);
                     setLoggedIn(true);
                     setEmail(email);
-                    navigate("/");
                 }
             })
             .catch(() => {
@@ -173,11 +172,10 @@ function App() {
             .then((res) => {
                 console.log(res);
                 if (res) {
-                   // setLoggedIn(true);
+                    setLoggedIn(true);
                     setIsInfoToolTipOpen(true);
                     setNotification({text: "Вы успешно зарегистрировались!", pic: loginSuccessful});
-                    //setEmail(email);
-                    navigate("/signin");
+                    setEmail(email);
                 }
             })
             .catch(() => {
@@ -189,7 +187,6 @@ function App() {
     const handleLogout = () => {
         localStorage.removeItem("token");
         setLoggedIn(false);
-        navigate("/signin");
     }
 
     const tokenCheck = () => {
@@ -199,7 +196,6 @@ function App() {
                 .then((res) => {
                     setLoggedIn(true);
                     setEmail(res.email);
-                    navigate("/");
                 })
                 .catch((err) => {
                     console.log(err)
