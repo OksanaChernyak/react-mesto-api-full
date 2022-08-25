@@ -39,12 +39,6 @@ function App() {
         tokenCheck()
     }, []);
 
-   /* useEffect(() => {
-        if (loggedIn) {
-            navigate("/")
-        }
-    }, [loggedIn]);*/
-
     useEffect(() => {
         if (loggedIn) {
             api.getUserData()

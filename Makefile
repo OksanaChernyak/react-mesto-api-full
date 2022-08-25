@@ -8,3 +8,6 @@ edit_nginx:
 reload_nginx:
 	sudo nginx -t && \
 	sudo systemctl restart nginx
+
+pm2_restart:
+	pm2 restart app
