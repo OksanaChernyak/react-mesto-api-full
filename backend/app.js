@@ -11,7 +11,7 @@ const errorsHandler = require('./middlewares/errors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const NotFoundError = require('./utils/NotFoundError');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3001 } = process.env;
 const app = express();
 require('dotenv').config();
 
